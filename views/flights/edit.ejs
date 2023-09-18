@@ -1,5 +1,5 @@
 <%- include('../partials/html-head') %>
-<link rel="stylesheet" href="/stylesheets/style.css">
+<link rel="stylesheet" href="/stylesheets/flights/edit.css">
 <%- include('../partials/nav') %>
 
 <main>
@@ -31,8 +31,6 @@
       name="flightNo"
       value="<%= flight.flightNo %>" 
       id="flightNo-input"
-      min="10"
-      max="9999"
     >
     <label for="departs">Departs:</label>
     <input 
@@ -40,8 +38,6 @@
       name="departs"
       value="<%= flight.departs %>" 
       id="departs"
-      min="10"
-      max="9999"
     >
     <button type="submit">Save Flight</button>
   </form>
