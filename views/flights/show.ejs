@@ -19,6 +19,23 @@
       <button>Edit Flight</button>
       </a>
     </section>
+    <div>Food:</div>
+    <ul>
+      <% flight.food.forEach(ingredient => { %>
+        <li><%= ingredient.name %></li>
+      <% }) %>
+    </ul>
+    <%# end cast list %>
+  </section>
+	<%# add to cast form below this comment %>
+  <form id="add-meal-to-food" method="POST" action="/flights/<%= flight._id %>/meals">
+    <select name="mealId">
+      <% meals.forEach(meal => { %>
+        <option value="<%= meal._id %>"><%= meal.name %></option>
+      <% }) %>
+    </select>
+    <button type="submit">Add to Food</button>
+  </form>
     <h2>Tickets</h2>
   <form 
     id="ticket-form"
@@ -40,7 +57,9 @@
         </tr>
       </thead>
       <tbody>
+        <% let total = 0 %>
         <% flight.tickets.forEach(function(ticket) { %>
+          <% total += ticket.price %>
           <tr>
             <td><%= ticket.seat %></td>
             <td><%= ticket.price %></td>
