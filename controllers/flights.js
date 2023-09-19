@@ -129,6 +129,21 @@ function addToFood(req, res) {
   })
 }
 
+function deleteTicket(req, res){
+  //find the movie
+  Flight.findById(req.params.flightId)
+  .then(flight => {
+     //find and delete review
+    flight.tickets.id(req.params.ticketId).deleteOne()
+     //save the movie
+    flight.save()
+    .then(() => {
+      //redirecrt back to movie show view
+      res.redirect(`/flights/${flight._id}`)
+    })
+  })
+}
+
 export{
   index,
   newFlight as new,
@@ -138,5 +153,6 @@ export{
   edit,
   update,
   createTicket,
-  addToFood
+  addToFood,
+  deleteTicket
 }
